@@ -34,3 +34,16 @@ services:
 
     links:
       - buildbot
+
+  worker:
+    image: "buildbot_ubuntu_gcc_4.9:latest"
+    environment:
+      BUILDMASTER: buildbot
+      BUILDMASTER_PORT: 9989
+      WORKERNAME: bsw-worker
+      WORKERPASS: pass
+      WORKER_ENVIRONMENT_BLACKLIST: DOCKER_BUILDBOT* BUILDBOT_ENV_* BUILDBOT_1* WORKER_ENVIRONMENT_BLACKLIST
+
+    links:
+      - buildbot
+
